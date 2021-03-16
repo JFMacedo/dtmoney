@@ -10,7 +10,7 @@ export const Content = styled.div`
   justify-content: space-between;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem 1rem 12rem;
+  padding: 2rem 1rem 8rem;
 
   button {
     height: 3rem;
