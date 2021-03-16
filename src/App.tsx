@@ -1,15 +1,10 @@
-import styled from 'styled-components';
-
-const Title = styled.h1 `
-  font-family: 'Asap';
-  font-size: 50px;
-  color: #00AA55;
-`;
+import { GlobalStyle } from "./styles/global";
 
 export function App() {
   return (
     <div className="App">
-      <Title>Hello world!</Title>
+      <GlobalStyle />
+      <h1>Hello world!</h1>
     </div>
   );
 }
