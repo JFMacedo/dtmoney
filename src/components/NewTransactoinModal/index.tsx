@@ -5,6 +5,8 @@ interface NewTransactoinModalProps {
   onRequestClose: () => void;
 }
 
+Modal.setAppElement('#root');
+
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactoinModalProps) {
   return (
     <Modal
