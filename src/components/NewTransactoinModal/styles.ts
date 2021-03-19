@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { darken } from 'polished';
+import { darken, transparentize } from 'polished';
 
 export const Container = styled.form`
   h2 {
@@ -52,30 +52,43 @@ export const TransactionTypeContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin: 1rem 0;
+`;
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    height: 4rem;
-    border-radius: 0.25rem;
-    border: 1px solid var(--color-input-border);
-    background-color: transparent;
-    transition: border-color 200ms;
+interface TypeButtonProps {
+  isActive: boolean;
+  activeColor: 'green' | 'red';
+}
 
-    &:hover {
-      border-color: ${darken(0.1, '#D7D7D7')};
-    }
+const colors = {
+  green: '#33CC66',
+  red: '#CC3366'
+}
 
-    img {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+export const TypeButton = styled.button<TypeButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 4rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-input-border);
+  background-color: ${ (props) => props.isActive
+    ? transparentize(0.9, colors[props.activeColor])
+    : 'transparent'
+  };
+  transition: all 200ms;
 
-    span {
-      font-size: 1rem;
-      color: var(--color-text-title);
-    }
+  &:hover {
+    border-color: ${darken(0.1, '#D7D7D7')};
+  }
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  span {
+    font-size: 1rem;
+    color: var(--color-text-title);
   }
 `;

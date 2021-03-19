@@ -1,10 +1,12 @@
+import { useState } from 'react';
+
 import Modal from 'react-modal';
 
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 
-import { Container, TransactionTypeContainer } from './styles';
+import { Container, TransactionTypeContainer, TypeButton } from './styles';
 
 interface NewTransactoinModalProps {
   isOpen: boolean;
@@ -14,6 +16,8 @@ interface NewTransactoinModalProps {
 Modal.setAppElement('#root');
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactoinModalProps) {
+  const [type, setType] = useState('');
+
   return (
     <Modal
         isOpen={ isOpen }
@@ -32,34 +36,38 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactoinMo
         <Container>
           <h2>Cadastrar transação</h2>
 
-          <input
-            type="text"
-            placeholder="Título"
-          />
+          <input type="text" placeholder="Título" />
 
-          <input
-            type="number"
-            placeholder="Valor"
-          />
+          <input type="number" placeholder="Valor" />
 
           <TransactionTypeContainer>
-            <button type="button">
+            <TypeButton
+              type="button"
+              onClick={ () => { setType('income') } }
+              isActive={ type === 'income' }
+              activeColor="green"
+            >
               <img src={ incomeImg } alt="Entrada"/>
               <span>Entrada</span>
-            </button>
+            </TypeButton>
 
-            <button type="button">
+            <TypeButton
+              type="button"
+              onClick={ () => { setType('outcome') } }
+              isActive={ type === 'outcome' }
+              activeColor="red"
+            >
               <img src={ outcomeImg } alt="Saída"/>
               <span>Saída</span>
-            </button>
+            </TypeButton>
           </TransactionTypeContainer>
 
-          <input
-            type="text"
-            placeholder="Categoria"
-          />
+          <input type="text" placeholder="Categoria" />
 
-          <button type="submit">
+          <button
+            type="submit"
+            disabled={ type === '' }
+          >
             Cadastrar
           </button>
         </Container>
