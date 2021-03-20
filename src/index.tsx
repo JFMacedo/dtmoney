@@ -9,6 +9,29 @@ createServer({
     transaction: Model,
   },
 
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Freelance de website',
+          type: 'income',
+          category: 'Dev',
+          amount: 6000,
+          createdAt: new Date('2021-03-20 07:55:29')
+        },
+        {
+          id: 2,
+          title: 'Aluguel',
+          type: 'outcome',
+          category: 'Casa',
+          amount: 1100,
+          createdAt: new Date('2021-03-23 17:05:00')
+        },
+      ]
+    })
+  },
+
   routes() {
     this.namespace = 'api';
 
