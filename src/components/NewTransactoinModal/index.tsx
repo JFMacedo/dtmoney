@@ -6,6 +6,8 @@ import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 
+import { api } from '../../services/api';
+
 import { Container, TransactionTypeContainer, TypeButton } from './styles';
 
 interface NewTransactoinModalProps {
@@ -23,12 +25,15 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactoinMo
 
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    console.log({
+
+    const data = {
       title,
       value,
       category,
       type
-    });
+    };
+
+    api.post('/transactions', data)
   }
 
   return (
