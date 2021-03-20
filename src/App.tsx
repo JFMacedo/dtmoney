@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { TransactionsProvider } from './TransactionsContext';
 
-import { NewTransactionModal } from './components/NewTransactoinModal';
+import { NewTransactionModal } from './components/NewTransactionModal';
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 
